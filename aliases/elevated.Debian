@@ -1,0 +1,3 @@
+alias apt-get="sudo /usr/bin/apt-get"
+alias service="sudo /usr/sbin/service"
+alias iptsave="sudo /usr/sbin/service iptables-persistent save"
