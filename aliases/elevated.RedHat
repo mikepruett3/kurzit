@@ -1,3 +1,27 @@
+# Installer Commands
+unalias yum
 alias yum="sudo /usr/bin/yum"
+
+# sudo Commands
+unalias service
 alias service="sudo /sbin/service"
+unalias useradd
+alias useradd='sudo /usr/sbin/useradd'
+unalias usermod
+alias usermod='sudo /usr/sbin/usermod'
+unalias ifconfig
+alias ifconfig='sudo /sbin/ifconfig'
+
+# iptables Commands
+unalias iptsave
 alias iptsave="sudo /sbin/service iptables save"
+unalias iptables
+alias iptables='sudo /sbin/iptables'
+unalias iptls
+alias iptls="iptables -L -v --line-numbers"
+
+# Machine Control Commands
+unalias shutdown
+alias shutdown='sudo /sbin/shutdown'
+unalias reboot
+alias reboot='sudo /sbin/reboot'

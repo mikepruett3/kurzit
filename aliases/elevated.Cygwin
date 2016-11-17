@@ -1,0 +1,3 @@
+# Installer Commands
+alias apt="sudo /bin/apt-cyg"
+alias apt-get="sudo /bin/apt-cyg"

@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-# Name: script-example
-# Brief: Guildeline example script
-# Author: ___
+# Name: kurzit
+# Brief: An super-efficient, expandable, fast BASH shell environment customizer.
+# Author: Mike Pruett <mikepruett3@gmail.com>
 
 # Setup Variables
 BashVer=$(bash --version | head -n 1 | gawk '{ print $4 }')
@@ -55,14 +55,14 @@ function Set_KurzitHome () {
         # Check if $HOME/.kurzit exists, then use it for kurzit_home
         if [ -d $HOME/.kurzit/ ]; then
             if [ -e $HOME/.kurzit/kurzit ]; then
-                export kurzit_home=$HOME/.kurzit/
+                export kurzit_home=$HOME/.kurzit
             fi
         fi
 
          # Check if $HOME/kurzit exists, then use it for kurzit_home
         if [ -d $HOME/kurzit/ ]; then
             if [ -e $HOME/kurzit/kurzit ]; then
-                export kurzit_home=$HOME/kurzit/
+                export kurzit_home=$HOME/kurzit
             fi
         fi
     fi

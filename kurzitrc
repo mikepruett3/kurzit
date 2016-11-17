@@ -13,4 +13,13 @@ function Load_Aliases () {
     done
 }
 
+# Load Utilities
+function Load_Utilities () {
+    # General Bash Aliases
+    for fn in $(find $kurzit_home/utils/ -type f ); do
+        . $fn
+    done
+}
+
 Load_Aliases
+Load_Utilities

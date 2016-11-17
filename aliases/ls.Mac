@@ -1,2 +1,8 @@
-alias ll='ls -lha'
-alias ls='ls -ha'
+unalias ls
+alias ls='ls -h'
+unalias ll
+alias ll='ls -l'
+unalias l
+alias l='ls -la'
+unalias ldir
+alias ldir='ll -d */'
