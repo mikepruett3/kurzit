@@ -1,0 +1,102 @@
+#!/usr/bin/env bash
+
+# Name: script-example
+# Brief: Guildeline example script
+# Author: ___
+
+# Setup Variables
+BashVer=$(bash --version | head -n 1 | gawk '{ print $4 }')
+Kern=$(uname -s)
+KernVer=$(uname -r)
+ScriptName=$(basename $0)
+
+# Export needed Variables that match OS/Distribution/Version
+function Get_Distro () {
+    # Ubuntu/Debian
+    if [ -a /etc/debian_version ]; then
+        export DISTRel=$(< /etc/debian_version)
+        if [ -e /usr/bin/lsb_release ]; then
+            export DISTVer=$(lsb_release -r | gawk '{ print $2 }')
+            export DIST=$(lsb_release -i | gawk '{ print $3 }')
+        else
+            export DIST=Debian
+        fi
+    fi
+
+    # RedHat/CentOS/Fedora
+    if [ -a /etc/redhat-release ]; then
+        export DISTRel=$(< /etc/redhat-release)
+        if [ -e /usr/bin/lsb_release ]; then
+            export DISTVer=$(lsb_release -r | gawk '{ print $2 }')
+            export DIST=$(lsb_release -i | gawk '{ print $3 }')
+        else
+            export DIST=RedHat
+        fi
+    fi
+
+    #MacOS/OSX
+    if [ -a /usr/bin/sw_vers ]; then
+        export DISTVer=$(sw_vers | grep ProductVersion | cut -d':' -f2)
+        export DISTRel=$(sw_vers | grep ProductName | cut -d':' -f2)
+        export DIST=MacOS
+    fi
+
+    #Cygwin
+    if [[ $Kern == CYGWIN* ]]; then
+        export DISTVer=$KernVer
+        export DISTRel=$Kern
+        export DIST=Cygwin
+    fi
+}
+
+function Set_KurzitHome () {
+    # 1st Check for empty variable
+    if [ -z $kurzit_home ]; then
+        # Check if $HOME/.kurzit exists, then use it for kurzit_home
+        if [ -d $HOME/.kurzit/ ]; then
+            if [ -e $HOME/.kurzit/kurzit ]; then
+                export kurzit_home=$HOME/.kurzit/
+            fi
+        fi
+
+         # Check if $HOME/kurzit exists, then use it for kurzit_home
+        if [ -d $HOME/kurzit/ ]; then
+            if [ -e $HOME/kurzit/kurzit ]; then
+                export kurzit_home=$HOME/kurzit/
+            fi
+        fi
+    fi
+
+    # 2nd Check for empty variable
+    if [ -z $kurzit_home ]; then
+        echo -n "Cannot find the kurzit_home variable..."
+        echo -n "Please type in the path:"
+        read kurzit_home
+        export kurzit_home
+            if ! [ -d $kurzit_home ]; then
+                echo Cannot find the kurzit_home variable, exiting script
+                exit 1
+            fi
+    fi
+}
+
+function Link_Kurzitrc () {
+    if [ ! -e ~/.kurzitrc ]; then
+        ln -s $kurzit_home/kurzitrc ~/.kurzitrc
+    fi
+}
+
+Get_Distro
+Set_KurzitHome
+Link_Kurzitrc
+
+# Modifying .bashrc with variables needed to run kurzit
+if [ -e ~/.bashrc ]; then
+    echo export DIST=$DIST >> ~/.bashrc
+    echo export kurzit_home=$kurzit_home >> ~/.bashrc
+    echo source ~/.kurzitrc >> ~/.bashrc
+else
+    echo -n "Cannot find .bashrc, exiting!"
+    exit 1
+fi
+
