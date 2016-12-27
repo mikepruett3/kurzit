@@ -1,27 +1,48 @@
 # Installer Commands
-unalias yum
+Alias_Check "yum"
 alias yum="sudo /usr/bin/yum"
 
 # sudo Commands
-unalias service
+Alias_Check "service"
 alias service="sudo /sbin/service"
-unalias useradd
+
+Alias_Check "systemctl"
+alias systemctl="sudo /sbin/systemctl"
+
+Alias_Check "useradd"
 alias useradd='sudo /usr/sbin/useradd'
-unalias usermod
+
+Alias_Check "userdel"
+alias userdel='sudo /usr/sbin/usrdel'
+
+Alias_Check "usermod"
 alias usermod='sudo /usr/sbin/usermod'
-unalias ifconfig
+
+Alias_Check "groupadd"
+alias groupadd='sudo /usr/sbin/groupadd'
+
+Alias_Check "groupdel"
+alias groupdel='sudo /usr/sbin/groupdel'
+
+Alias_Check "groupmod"
+alias groupmod='sudo /usr/sbin/groupmod'
+
+Alias_Check "ifconfig"
 alias ifconfig='sudo /sbin/ifconfig'
 
 # iptables Commands
-unalias iptsave
+Alias_Check "iptsave"
 alias iptsave="sudo /sbin/service iptables save"
-unalias iptables
+
+Alias_Check "iptables"
 alias iptables='sudo /sbin/iptables'
-unalias iptls
+
+Alias_Check "iptls"
 alias iptls="iptables -L -v --line-numbers"
 
 # Machine Control Commands
-unalias shutdown
+Alias_Check "shutdown"
 alias shutdown='sudo /sbin/shutdown'
-unalias reboot
+
+Alias_Check "reboot"
 alias reboot='sudo /sbin/reboot'

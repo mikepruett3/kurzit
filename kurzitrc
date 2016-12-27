@@ -21,5 +21,13 @@ function Load_Utilities () {
     done
 }
 
+# Unalias existing Aliases
+function Alias_Check () {
+    _alias=$1
+    if [[ $(type -t $_alias) == "alias" ]]; then
+        unalias $_alias
+    fi
+}
+
 Load_Aliases
 Load_Utilities
