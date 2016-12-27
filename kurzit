@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
 # Name: kurzit
+<<<<<<< Updated upstream
 # Brief: An super-efficient, expandable, fast BASH shell environment customizer.
+=======
+# Brief: The setup script for Kurzit. This will make small modifications to your profile, so that Kurzit will run at init.
+>>>>>>> Stashed changes
 # Author: Mike Pruett <mikepruett3@gmail.com>
 
 # Setup Variables
@@ -90,13 +94,21 @@ Get_Distro
 Set_KurzitHome
 Link_Kurzitrc
 
-# Modifying .bashrc with variables needed to run kurzit
-if [ -e ~/.bashrc ]; then
-    echo export DIST=$DIST >> ~/.bashrc
-    echo export kurzit_home=$kurzit_home >> ~/.bashrc
-    echo source ~/.kurzitrc >> ~/.bashrc
-else
+# Searching for .bashrc, and exit if not found!
+if [ ! -e ~/.bashrc ]; then
     echo -n "Cannot find .bashrc, exiting!"
     exit 1
 fi
 
+# Modifying .bashrc with variables needed to run kurzit
+if [[ $(grep -c "DIST" ~/.bashrc) -eq 0 ]]; then
+    echo export DIST=$DIST >> ~/.bashrc
+fi
+
+if [[ $(grep -c "kurzit_home" ~/.bashrc) -eq 0 ]]; then
+    echo export kurzit_home=$kurzit_home >> ~/.bashrc
+fi
+
+if [[ $(grep -c ".kurzitrc" ~/.bashrc) -eq 0 ]]; then
+    echo source ~/.kurzitrc >> ~/.bashrc
+fi
