@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+# Cancel upgrade if the current user doesn't have write permissions for the kurzit directory.
+if ! [[ -w "$kurzit_home" ]]; then
+    echo "Cannot Write to $kurzit_home folder"
+    exit 1
+fi
+
+# Cancel upgrade if git is unavailable on the system
+if ! [ -x "$(command -v git)" ]; then
+    echo "Missing git!"
+    exit 1
+fi
+
+# Setting _kurzit_update Global Variable
+export _kurzit_update=$(date +"%Y%m%d")
+
+# Modifying .bashrc _kurzit_update Variable
+if [[ $(grep -c "_kurzit_update" ~/.bashrc) -eq 0 ]]; then
+    echo 'export _kurzit_update=$(cat ~/.kdup)' >> ~/.bashrc
+    echo $_kurzit_update > ~/.kdup
+fi
+
+cd "$kurzit_home"
+if git pull --rebase --stat origin master; then
+  echo "Updated Kurzit!"
+else
+  echo "There was an error updating. Try again later?"
+fi

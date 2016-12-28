@@ -1,11 +1,8 @@
 #!/usr/bin/env bash
 
 # Name: kurzit
-<<<<<<< Updated upstream
 # Brief: An super-efficient, expandable, fast BASH shell environment customizer.
-=======
 # Brief: The setup script for Kurzit. This will make small modifications to your profile, so that Kurzit will run at init.
->>>>>>> Stashed changes
 # Author: Mike Pruett <mikepruett3@gmail.com>
 
 # Setup Variables
