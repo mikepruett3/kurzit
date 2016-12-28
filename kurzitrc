@@ -36,7 +36,7 @@ function Last_Update_Check () {
         $kurzit_home/utils/update
     else
          _now=$(date +"%Y%m%d")
-         if [ $(expr $_now - $_kurzit_update) -ge 14 ]; then
+         if [ $(expr $now - $_kurzit_update) -ge 14 ]; then
             echo -n "Checking for Latest Kurzit Update, running update script..."
             $kurzit_home/utils/update
          fi
