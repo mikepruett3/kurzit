@@ -31,15 +31,15 @@ function Alias_Check () {
 
 # Parse Date of Last Update
 function Last_Update_Check () {
-    if [ -z $_kurzit_update ]; then
-        echo -n "Cannot find Last Update, running update script..."
+    _kurzit_last_update=$(cat ~/.kdup)
+    if [ -z $_kurzit_last_update ]; then
+        echo "Cannot find Last Update, running update script..."
         $kurzit_home/utils/update
     else
-         _now=$(date +"%Y%m%d")
-         if [ $(expr $now - $_kurzit_update) -ge 14 ]; then
-            echo -n "Checking for Latest Kurzit Update, running update script..."
+        if [ $(( ( $(date +%s) - _kurzit_last_update )/(60*60*24) )) -ge "14" ]; then
+            echo "Checking for Latest Kurzit Update, running update script..."
             $kurzit_home/utils/update
-         fi
+        fi
     fi
 }
 

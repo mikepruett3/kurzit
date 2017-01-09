@@ -13,13 +13,10 @@ if ! [ -x "$(command -v git)" ]; then
 fi
 
 # Setting _kurzit_update Global Variable
-export _kurzit_update=$(date +"%Y%m%d")
+export _kurzit_last_update=$(date +%s)
 
 # Modifying .bashrc _kurzit_update Variable
-if [[ $(grep -c "_kurzit_update" ~/.bashrc) -eq 0 ]]; then
-    echo 'export _kurzit_update=$(cat ~/.kdup)' >> ~/.bashrc
-    echo $_kurzit_update > ~/.kdup
-fi
+echo $_kurzit_last_update > ~/.kdup
 
 cd "$kurzit_home"
 if git pull --rebase --stat origin master; then
