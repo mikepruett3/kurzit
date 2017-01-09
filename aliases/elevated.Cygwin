@@ -1,6 +1,6 @@
 # Installer Commands
 Alias_Check "apt"
-alias apt="sudo /bin/apt-cyg"
+alias apt="/bin/apt-cyg"
 
 Alias_Check "apt-get"
-alias apt-get="sudo /bin/apt-cyg"
+alias apt-get="/bin/apt-cyg"

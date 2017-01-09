@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+echo "Beginning Update Check..."
+
 # Cancel upgrade if the current user doesn't have write permissions for the kurzit directory.
 if ! [[ -w "$kurzit_home" ]]; then
     echo "Cannot Write to $kurzit_home folder"
