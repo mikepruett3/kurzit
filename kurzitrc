@@ -34,11 +34,11 @@ function Last_Update_Check () {
     _kurzit_last_update=$(cat ~/.kdup)
     if [ -z $_kurzit_last_update ]; then
         echo "Cannot find Last Update, running update script..."
-        $kurzit_home/utils/update
+        $kurzit_home/update
     else
         if [ $(( ( $(date +%s) - _kurzit_last_update )/(60*60*24) )) -ge "14" ]; then
             echo "Checking for Latest Kurzit Update, running update script..."
-            $kurzit_home/utils/update
+            $kurzit_home/update
         fi
     fi
 }
