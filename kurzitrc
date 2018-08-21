@@ -2,7 +2,7 @@
 
 # Load Appropriate Alias Scripts based on $DIST
 function Load_Aliases () {
-    if [ $DIST -eq "MacOS" ]; then
+    if [ $DIST == "MacOS" ]; then
         # Distro Specific
         for fn in $(find $kurzit_home/aliases/ -name "*.$DIST"); do
             . $fn
