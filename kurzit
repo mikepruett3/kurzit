@@ -17,8 +17,8 @@ function Get_Distro () {
     if [ -a /etc/debian_version ]; then
         export DISTRel=$(< /etc/debian_version)
         if [ -e /usr/bin/lsb_release ]; then
-            export DISTVer=$(lsb_release -r | gawk '{ print $2 }')
-            export DIST=$(lsb_release -i | gawk '{ print $3 }')
+            export DISTVer=$(lsb_release -r | awk '{ print $2 }')
+            export DIST=$(lsb_release -i | awk '{ print $3 }')
         else
             export DIST=Debian
         fi
@@ -28,8 +28,8 @@ function Get_Distro () {
     if [ -a /etc/redhat-release ]; then
         export DISTRel=$(< /etc/redhat-release)
         if [ -e /usr/bin/lsb_release ]; then
-            export DISTVer=$(lsb_release -r | gawk '{ print $2 }')
-            export DIST=$(lsb_release -i | gawk '{ print $3 }')
+            export DISTVer=$(lsb_release -r | awk '{ print $2 }')
+            export DIST=$(lsb_release -i | awk '{ print $3 }')
         else
             export DIST=RedHat
         fi
