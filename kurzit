@@ -6,7 +6,7 @@
 # Author: Mike Pruett <mikepruett3@gmail.com>
 
 # Setup Variables
-BashVer=$(bash --version | head -n 1 | gawk '{ print $4 }')
+BashVer=$(bash --version | head -n 1 | awk '{ print $4 }')
 Kern=$(uname -s)
 KernVer=$(uname -r)
 ScriptName=$(basename $0)
