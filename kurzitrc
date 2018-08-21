@@ -2,11 +2,12 @@
 
 # Load Appropriate Alias Scripts based on $DIST
 function Load_Aliases () {
+    # Distro Specific
+    for fn in $(find $kurzit_home/aliases/ -name "*.$DIST"); do
+        . $fn
+    done
+
     if [ $DIST == "MacOS" ]; then
-        # Distro Specific
-        for fn in $(find $kurzit_home/aliases/ -name "*.$DIST"); do
-            . $fn
-        done
         # General Bash Aliases
         for fn in $(find $kurzit_home/aliases/ -name "*.Bash" | grep -v "ls.Bash"); do
             . $fn
