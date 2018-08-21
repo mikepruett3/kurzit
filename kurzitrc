@@ -7,10 +7,10 @@ function Load_Aliases () {
         for fn in $(find $kurzit_home/aliases/ -name "*.$DIST"); do
             . $fn
         done
-        . $kurzit_home/aliases/common.Bash
-        . $kurzit_home/aliases/df.Bash
-        . $kurzit_home/aliases/du.Bash
-        . $kurzit_home/aliases/history.Bash
+        # General Bash Aliases
+        for fn in $(find $kurzit_home/aliases/ -name "*.Bash" | grep -v "ls.Bash"); do
+            . $fn
+        done
     else
         # General Bash Aliases
         for fn in $(find $kurzit_home/aliases/ -name "*.Bash"); do
