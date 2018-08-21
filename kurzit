@@ -37,8 +37,8 @@ function Get_Distro () {
 
     #MacOS/OSX
     if [ -a /usr/bin/sw_vers ]; then
-        export DISTVer=$(sw_vers | grep ProductVersion | cut -d':' -f2)
-        export DISTRel=$(sw_vers | grep ProductName | cut -d':' -f2)
+        export DISTVer=$(sw_vers | grep ProductVersion | awk '{ print $2 }')
+        export DISTRel=$(sw_vers | grep ProductName | awk '{ print $2" "$3" "$4" "$5 }')
         export DIST=MacOS
     fi
 
