@@ -50,7 +50,7 @@ function Get_Distro () {
     fi
     
     #FreeBSD
-    if [[ $Kern == *BSD* ]]; then
+    if [[ $Kern == *BSD ]]; then
         export DISTVer=$KernVer
         export DISTRel=$Kern
         export DIST=BSD
