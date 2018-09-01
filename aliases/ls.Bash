@@ -1,5 +1,13 @@
 Alias_Check "ls"
-alias ls='ls -h --color=tty'
+if [[ $DIST == MacOS ]]; then
+    alias ls='ls -G'
+fi
+
+if [[ $DIST == BSD ]]; then
+    alias ls='ls -G'
+else
+    alias ls='ls -h --color=tty'
+fi
 
 Alias_Check "ll"
 alias ll='ls -l'
