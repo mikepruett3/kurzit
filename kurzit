@@ -48,6 +48,12 @@ function Get_Distro () {
         export DISTRel=$Kern
         export DIST=Cygwin
     fi
+    
+    #FreeBSD
+    if [[ $Kern == *BSD* ]]; then
+        export DISTVer=$KernVer
+        export DISTRel=$Kern
+        export DIST=BSD
 }
 
 function Set_KurzitHome () {
