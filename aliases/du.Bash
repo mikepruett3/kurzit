@@ -5,5 +5,5 @@ if [ -f /usr/bin/ncdu ] || [ -f /usr/local/bin/ncdu ]; then
     alias du='ncdu'
 else
     Alias_Check "du"
-    alias du='du -h --max-depth=1'
+    alias du='du -h ' #--max-depth=1'
 fi
