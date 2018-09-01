@@ -6,7 +6,7 @@ fi
 if [[ $DIST == BSD ]]; then
     alias ls='ls -G'
 else
-    alias ls='ls -h --color=tty'
+    alias ls='ls -h --color=all'
 fi
 
 Alias_Check "ll"
