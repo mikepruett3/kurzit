@@ -54,6 +54,7 @@ function Get_Distro () {
         export DISTVer=$KernVer
         export DISTRel=$Kern
         export DIST=BSD
+    fi
 }
 
 function Set_KurzitHome () {
