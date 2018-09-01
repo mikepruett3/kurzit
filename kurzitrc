@@ -7,17 +7,10 @@ function Load_Aliases () {
         . $fn
     done
 
-    if [ $DIST == "MacOS" ]; then
-        # General Bash Aliases
-        for fn in $(find $kurzit_home/aliases/ -name "*.Bash" | grep -v "ls.Bash"); do
-            . $fn
-        done
-    else
-        # General Bash Aliases
-        for fn in $(find $kurzit_home/aliases/ -name "*.Bash"); do
-            . $fn
-        done
-    fi
+    # General Bash Aliases
+    for fn in $(find $kurzit_home/aliases/ -name "*.Bash"); do
+        . $fn
+    done
 }
 
 # Load Utilities

@@ -1,5 +1,5 @@
 Alias_Check "ls"
-alias ls='ls -h --color=tty'
+alias ls='ls -h'
 
 Alias_Check "ll"
 alias ll='ls -l'
