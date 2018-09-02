@@ -1,6 +1,6 @@
 # Installer Commands
 Alias_Check "pacman"
-alias yum="sudo /usr/bin/pacman"
+alias pacman="sudo /usr/bin/pacman"
 
 # sudo Commands
 
