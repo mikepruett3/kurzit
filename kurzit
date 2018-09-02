@@ -55,6 +55,17 @@ function Get_Distro () {
         export DISTRel=$Kern
         export DIST=BSD
     fi
+
+    # Arch
+    if [ -a /etc/arch-release ]; then
+        export DISTRel=$Kern
+        if [ -e /usr/bin/lsb_release ]; then
+            export DISTVer=$(lsb_release -r | awk '{ print $2 }')
+            export DIST=$(lsb_release -i | awk '{ print $3 }')
+        else
+            export DIST=Arch
+        fi
+    fi
 }
 
 function Set_KurzitHome () {
