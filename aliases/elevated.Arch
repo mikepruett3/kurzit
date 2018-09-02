@@ -1,0 +1,36 @@
+# Installer Commands
+Alias_Check "pacman"
+alias yum="sudo /usr/bin/pacman"
+
+# sudo Commands
+
+Alias_Check "systemctl"
+alias systemctl="sudo /usr/bin/systemctl"
+
+Alias_Check "useradd"
+alias useradd='sudo /usr/bin/useradd'
+
+Alias_Check "userdel"
+alias userdel='sudo /usr/bin/usrdel'
+
+Alias_Check "usermod"
+alias usermod='sudo /usr/bin/usermod'
+
+Alias_Check "groupadd"
+alias groupadd='sudo /usr/bin/groupadd'
+
+Alias_Check "groupdel"
+alias groupdel='sudo /usr/bin/groupdel'
+
+Alias_Check "groupmod"
+alias groupmod='sudo /usr/bin/groupmod'
+
+Alias_Check "ifconfig"
+alias ifconfig='ip addr show'
+
+# Machine Control Commands
+Alias_Check "shutdown"
+alias shutdown='sudo /usr/bin/shutdown'
+
+Alias_Check "reboot"
+alias reboot='sudo /usr/bin/reboot'
