@@ -2,6 +2,12 @@
 Alias_Check "pacman"
 alias pacman="sudo /usr/bin/pacman"
 
+Alias_Check "pacupdate"
+alias pacupdate="pacman -Syu"
+
+Alias_Check "yaoupdate"
+alias yaoupdate="yaourt -Syu"
+
 # sudo Commands
 
 Alias_Check "systemctl"
