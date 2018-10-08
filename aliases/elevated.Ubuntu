@@ -1,0 +1,14 @@
+# Installer Commands
+Alias_Check "apt-get"
+alias apt-get="sudo /usr/bin/apt-get"
+
+Alias_Check "apt"
+alias apt="sudo /usr/bin/apt"
+
+# sudo Commands
+Alias_Check "service"
+alias service="sudo /usr/sbin/service"
+
+# IPTables Commands
+Alias_Check "iptsave"
+alias iptsave="sudo /usr/sbin/service iptables-persistent save"
