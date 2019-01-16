@@ -3,7 +3,7 @@ Alias_Check "pacman"
 alias pacman="sudo /usr/bin/pacman"
 
 Alias_Check "pacupdate"
-alias pacupdate="pacman -Sy archlinux-keyring && pacman -Syu"
+alias pacupdate="pacman -Sy --noconfirm archlinux-keyring && pacman -Syu"
 
 Alias_Check "yaoupdate"
 alias yaoupdate="yaourt -Syu"
