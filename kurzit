@@ -124,6 +124,6 @@ if [[ $(grep -c "kurzit_home" ~/.bashrc) -eq 0 ]]; then
     echo export kurzit_home=$kurzit_home >> ~/.bashrc
 fi
 
-if [[ $(grep -c ".kurzitrc" ~/.bashrc) -eq 0 ]]; then
+if [[ $(grep -c "kurzitrc" ~/.bashrc) -eq 0 ]]; then
     echo source $kurzit_home/kurzitrc >> ~/.bashrc
 fi
