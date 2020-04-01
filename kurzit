@@ -107,7 +107,7 @@ function Link_Kurzitrc () {
 
 Get_Distro
 Set_KurzitHome
-Link_Kurzitrc
+#Link_Kurzitrc
 
 # Searching for .bashrc, and exit if not found!
 if [ ! -e ~/.bashrc ]; then
@@ -125,5 +125,5 @@ if [[ $(grep -c "kurzit_home" ~/.bashrc) -eq 0 ]]; then
 fi
 
 if [[ $(grep -c ".kurzitrc" ~/.bashrc) -eq 0 ]]; then
-    echo source ~/.kurzitrc >> ~/.bashrc
+    echo source $kurzit_home/kurzitrc >> ~/.bashrc
 fi
