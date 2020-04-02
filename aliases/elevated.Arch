@@ -11,6 +11,9 @@ alias yaoupdate="yaourt -Syu"
 Alias_Check "pacman-key"
 alias pacman-key="sudo /usr/sbin/pacman-key"
 
+Alias_Check "pacls"
+alias pacls="pacman -Q"
+
 # sudo Commands
 
 Alias_Check "systemctl"
