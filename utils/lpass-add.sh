@@ -5,8 +5,14 @@ function lpass-add () {
     Container="SSH Keys"
 
     # Check for LastPass CLI tool
-    if ! hash lpass2; then
+    if ! hash lpass; then
         echo "lpass not installed or included in path!"
+        return
+    fi
+
+    # Check if $Container has any entries
+    if [[ ! $(lpass ls "$Container") ]]; then
+        echo "Container does not exist!"
         return
     fi
 
