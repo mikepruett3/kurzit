@@ -7,7 +7,7 @@ function lpass-add () {
     # Check for LastPass CLI tool
     if ! hash lpass2; then
         echo "lpass not installed or included in path!"
-        break
+        exit
     fi
 
     # Load in each SSH Private Key into ssh-agent
