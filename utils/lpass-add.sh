@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Setup Variables
-ScriptName=$(basename $0)
+#ScriptName=$(basename $0)
 Container="SSH Keys"
 
 # Check for LastPass CLI tool
