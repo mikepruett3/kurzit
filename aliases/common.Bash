@@ -25,11 +25,14 @@ Function_Check "srcp"
 function srcp {
     if [[ ! -e "$HOME/.bash_profile" ]]; then
         if [[ ! -e "$HOME/.bash_login" ]]; then
+            echo "$HOME/.profile found!"
             source "$HOME/.profile"
         else
+            echo "$HOME/.bash_login found!"
             source "$HOME/.bash_login"
         fi
     else
+        echo "$HOME/.bash_profile found!"
         source "$HOME/.bash_profile"
     fi
 }
