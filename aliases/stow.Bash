@@ -1,6 +1,6 @@
 # Installer Commands
-Alias_Check "stowth"
-alias stowth="stow -vSt ~ $1"
+Function_Check "stowth"
+function stowth { stow -vSt ~ ${1}; }
 
-Alias_Check "unstow"
-alias unstow="stow -vDt ~ $1"
+Function_Check "unstow"
+function unstow { stow -vDt ~ ${1}; }
