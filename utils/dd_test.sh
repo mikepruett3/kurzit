@@ -19,7 +19,7 @@ function dd_test () {
     
         if [ $COUNT -le 0 ]; then
             echo "Block size of $BLOCK_SIZE estimated to require $COUNT blocks, aborting further tests."
-            break
+            return
         fi
     
         # Create a test file with the specified block size
