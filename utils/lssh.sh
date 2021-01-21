@@ -29,7 +29,7 @@ function lssh () {
         if [[ "$Host" == "$KEY" ]]; then
             lpass show --field="Private Key" "$Container/$KEY" | setsid ssh-add /dev/stdin
             ssh $Host
-            lpass show --field="Private Key" "$Container/$KEY" | setsid ssh-add -d /dev/stdin
+            lpass show --field="Private Key" "$Container/$KEY" | ssh-add -d /dev/stdin
         fi
     done
 }
