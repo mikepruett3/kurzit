@@ -20,3 +20,16 @@ alias grep='grep -i'
 
 Alias_Check "mkdir"
 alias mkdir='mkdir -pv'
+
+Function_Check "srcp"
+function srcp {
+    if [[ ! -e "$HOME/.bash_profile" ]]; then
+        if [[ ! -e "$HOME/.bash_login" ]]; then
+            source "$HOME/.profile"
+        else
+            source "$HOME/.bash_login"
+        fi
+    else
+        source "$HOME/.bash_profile"
+    fi
+}
