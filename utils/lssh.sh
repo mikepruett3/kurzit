@@ -28,9 +28,10 @@ function lssh () {
     for KEY in $(lpass ls "$Container" | awk '{ print substr( $2, 6, length($2) ) }'); do
         if [[ "$Host" == "$KEY" ]]; then
             lpass show --field="Private Key" "$Container/$KEY" | setsid ssh-add /dev/stdin
-            PublicKey=lpass show --field="Public Key" "$Container/$KEY"
+            PublicKey=$(lpass show --field="Public Key" "$Container/$KEY")
             ssh $Host
             echo $PublicKey | ssh-add -d /dev/stdin
+            unset PublicKey
             #lpass show --field="Public Key" "$Container/$KEY" | ssh-add -d /dev/stdin
         fi
     done
