@@ -26,7 +26,8 @@ function lssh () {
 
     # Load in each SSH Private Key into ssh-agent
     for KEY in $(lpass ls "$Container" | awk '{ print substr( $2, 6, length($2) ) }'); do
-        if [[ $Host -eq $KEY ]]; then
+        echo $KEY
+        if [[ "$Host" -eq "$KEY" ]]; then
             lpass show --field="Private Key" "$Container/$KEY" | setsid ssh-add /dev/stdin
             ssh $Host
         fi
