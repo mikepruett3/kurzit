@@ -3,5 +3,5 @@ Alias_Check "gitreset"
 alias gitreset="git fetch --all; git reset --hard origin/master; git pull"
 
 # Git Pull specified directory
-Alias_Check "gp"
+Function_Check "gp"
 function gp { pushd "${1}"; git pull; popd; }

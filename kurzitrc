@@ -29,6 +29,14 @@ function Alias_Check () {
     fi
 }
 
+# Unload existing Function
+function Function_Check () {
+    _function=${1}
+    if [[ $(type -t $_function) == "function" ]]; then
+        unset -f $_function
+    fi
+}
+
 # Parse Date of Last Update
 function Last_Update_Check () {
     _kurzit_last_update=$(cat ~/.kdup)
