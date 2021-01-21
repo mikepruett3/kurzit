@@ -24,15 +24,7 @@ alias mkdir='mkdir -pv'
 Function_Check "srcp"
 function srcp {
     if [[ ! -e "$HOME/.bash_profile" ]]; then
-        if [[ ! -e "$HOME/.bash_login" ]]; then
-            if [[ ! -e "$HOME/.profile" ]]; then
-                source "$HOME/.bashrc"
-            else
-                source "$HOME/.profile"
-            fi
-        else
-            source "$HOME/.bash_login"
-        fi
+        source "$HOME/.profile"
     else
         source "$HOME/.bash_profile"
     fi
