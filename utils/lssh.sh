@@ -21,15 +21,14 @@ function lssh () {
     if [[ -e "$HOME/.ssh/config" ]]; then
         if [[ $(grep "Host $Host" ~/.ssh/config) != "" ]]; then
             Host=$(ssh -G $Host | grep -m1 -oP "(?<=hostname ).*")
-            echo $Host
         fi
     fi
 
     # Load in each SSH Private Key into ssh-agent
-    #for KEY in $(lpass ls "$Container" | awk '{ print substr( $2, 6, length($2) ) }'); do
-    #    if [[ $Host -eq $KEY ]]; then
-    #        lpass show --field="Private Key" "$Container/$KEY" | setsid ssh-add /dev/stdin
-    #        ssh $Host
-    #    fi
-    #done
+    for KEY in $(lpass ls "$Container" | awk '{ print substr( $2, 6, length($2) ) }'); do
+        if [[ $Host -eq $KEY ]]; then
+            lpass show --field="Private Key" "$Container/$KEY" | setsid ssh-add /dev/stdin
+            ssh $Host
+        fi
+    done
 }
