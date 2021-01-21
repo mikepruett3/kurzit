@@ -30,7 +30,7 @@ function lssh () {
             PrivateKey=$(lpass show --field="Private Key" "$Container/$KEY")
             PublicKey=$(lpass show --field="Public Key" "$Container/$KEY")
             echo "$PrivateKey" | setsid ssh-add /dev/stdin
-            ssh $Host ${2-9}
+            ssh "$Host" "${@:2}"
             echo "$PublicKey" | ssh-add -d /dev/stdin
             unset PublicKey
             unset PrivateKey
