@@ -4,4 +4,4 @@ alias gitreset="git fetch --all; git reset --hard origin/master; git pull"
 
 # Git Pull specified directory
 Function_Check "gp"
-function gp { pushd ${1}; git pull; popd }
+function gp { pushd ${1}; git pull; popd; }
