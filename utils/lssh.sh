@@ -3,7 +3,7 @@
 function lssh () {
     # Setup Variables
     Container="SSH Keys"
-    Host=${1}
+    Host="${1}"
 
     # Check for LastPass CLI tool
     if ! hash lpass; then
