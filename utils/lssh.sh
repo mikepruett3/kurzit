@@ -20,7 +20,7 @@ function lssh () {
     # Check for matching Host entries in ~/.ssh/config, and use the FQDN Hostname for $Host
     if [[ -e "~/.ssh/config" ]]; then
         echo "SSH Config file found!"
-        if [[ $(grep "Host $Host" ~/.ssh/config) ]]; then
+        if [[] $(grep "Host $Host" ~/.ssh/config) -ne "" ]]; then
             Host=$(ssh -G $Host | grep -m1 -oP "(?<=hostname ).*")
             echo $Host
         fi
