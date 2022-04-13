@@ -11,6 +11,12 @@ function lssh () {
         return
     fi
 
+    # Check if LastPass CLI is logged in
+    if [[ ! $(lpass status) ]]; then
+        echo "Not Logged into LastPass"
+        return
+    fi
+
     # Check if $Container has any entries
     if [[ ! $(lpass ls "$Container") ]]; then
         echo "Container does not exist!"
@@ -18,9 +24,10 @@ function lssh () {
     fi
 
     # Check for matching Host entries in ~/.ssh/config, and use the FQDN Hostname for $Host
-    if [[ -e "$HOME/.ssh/config" ]]; then
+    if [[ -e "~/.ssh/config" ]]; then
         if [[ $(grep "Host $Host" ~/.ssh/config) != "" ]]; then
             Host=$(ssh -G $Host | grep -m1 -oP "(?<=hostname ).*")
+            echo "$Host"
         fi
     fi
 
