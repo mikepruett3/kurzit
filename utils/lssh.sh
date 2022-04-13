@@ -11,12 +11,6 @@ function lssh () {
         return
     fi
 
-    # Check if LastPass CLI is logged in
-    if [[ ! lpass status ]]; then
-        echo "Not Logged into LastPass"
-        return
-    fi
-
     # Check if $Container has any entries
     if [[ ! $(lpass ls "$Container") ]]; then
         echo "Container does not exist!"
