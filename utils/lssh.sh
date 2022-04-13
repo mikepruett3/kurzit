@@ -12,7 +12,7 @@ function lssh () {
     fi
 
     # Check if LastPass CLI is logged in
-    if [[ ! $(lpass status) ]]; then
+    if [[ ! (lpass status) ]]; then
         echo "Not Logged into LastPass"
         return
     fi
