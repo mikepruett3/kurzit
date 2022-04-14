@@ -5,8 +5,6 @@ function lssh() {
     Container="SSH Keys"
     Host="${1}"
 
-    echo "${1}"
-
     # Check for LastPass CLI tool
     if ! hash lpass; then
         echo "lpass not installed or included in path!"
@@ -20,8 +18,9 @@ function lssh() {
     fi
 
     # Check for matching Host entries in ~/.ssh/config, and use the FQDN Hostname for $Host
-    if test -f "~/.ssh/config"; then
-        if [[ $(grep "Host $Host" ~/.ssh/config) != "" ]]; then
+    if test -f ~/.ssh/config; then
+        echo "$Host"
+        if grep -q "Host $Host" ~/.ssh/config; then
             Host=$(ssh -G $Host | grep -m1 -oP "(?<=hostname ).*")
             echo "$Host"
         fi
