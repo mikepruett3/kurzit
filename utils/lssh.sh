@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-function lssh () {
+function lssh() {
     # Setup Variables
     Container="SSH Keys"
     Host="${1}"
 
-    echo Test
-    
+    echo "${1}"
+
     # Check for LastPass CLI tool
     if ! hash lpass; then
         echo "lpass not installed or included in path!"
