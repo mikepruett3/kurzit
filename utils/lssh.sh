@@ -21,7 +21,6 @@ function lssh() {
     if test -f ~/.ssh/config; then
         if grep -q "Host $Host" ~/.ssh/config; then
             Host=$(ssh -G $Host | grep -m1 -oP "(?<=hostname ).*")
-            echo "$Host"
         fi
     fi
 
