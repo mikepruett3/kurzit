@@ -5,6 +5,7 @@ function lssh () {
     Container="SSH Keys"
     Host="${1}"
 
+    echo "Test!"
     # Check for LastPass CLI tool
     if ! hash lpass; then
         echo "lpass not installed or included in path!"
