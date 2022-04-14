@@ -19,7 +19,6 @@ function lssh() {
 
     # Check for matching Host entries in ~/.ssh/config, and use the FQDN Hostname for $Host
     if test -f ~/.ssh/config; then
-        echo "$Host"
         if grep -q "Host $Host" ~/.ssh/config; then
             Host=$(ssh -G $Host | grep -m1 -oP "(?<=hostname ).*")
             echo "$Host"
