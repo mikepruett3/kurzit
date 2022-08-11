@@ -7,4 +7,4 @@ Function_Check "gp"
 function gp { pushd ${1}; git pull; popd; }
 
 # Git Pull from the .kurzit directory
-function updp { pushd ${kurzit_home}; git pull; popd }
+function updp { pushd ${kurzit_home}; git pull; popd; }
