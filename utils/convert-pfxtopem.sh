@@ -49,6 +49,9 @@ function Convert-PFXtoPEM () {
     # Convert/Extract the PFX file to CA Certificate Bundle file
     openssl pkcs12 -in "${FILE}" -cacerts -nokeys -chain -password pass:"${PFXPass}" -out "${FILE::-4}.chain.cer"
 
+    # Convert/Extract the PFX file to a combined PEM file with Key, Certificate and CA Certificate Bundle
+    openssl pkcs12 in "${FILE}" -out "${FILE::-4}.pem"
+
     # Cleanup vars
     unset FILE
     unset PFXPass
