@@ -27,7 +27,6 @@ else
     for DIR in $KURZIT_DIRS; do
         if [ -d $HOME/$DIR/ ]; then
             if [ -e $HOME/$DIR/kurzit ]; then
-                echo "$HOME/$DIR"
                 export kurzit_home=$HOME/$DIR
             fi
         fi
@@ -66,9 +65,11 @@ fi
 # Check if Starship Cross-Platform Prompt is installed
 hash starship &> /dev/null
 if [ $? -eq 0 ]; then
-    echo "" >> ~/.bashrc
-    echo "# Starship Variables:" >> ~/.bashrc
-    echo export STARSHIP_DISTRO="$ICON " >> ~/.bashrc
-    echo export STARSHIP_CONFIG=~/.config/starship.toml >> ~/.bashrc
-    echo 'eval "$(starship init bash)"' >> ~/.bashrc
+    if [[ $(grep -c "STARSHIP_DISTRO" ~/.bashrc) -eq 0 ]]; then
+        echo "" >> ~/.bashrc
+        echo "# Starship Variables:" >> ~/.bashrc
+        echo export STARSHIP_DISTRO="$ICON " >> ~/.bashrc
+        echo export STARSHIP_CONFIG=~/.config/starship.toml >> ~/.bashrc
+        echo 'eval "$(starship init bash)"' >> ~/.bashrc
+    fi
 fi
