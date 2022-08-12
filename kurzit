@@ -10,6 +10,8 @@ BashVer=$(bash --version | head -n 1 | awk '{ print $4 }')
 Kern=$(uname -s)
 KernVer=$(uname -r)
 ScriptName=$(basename $0)
+TEST=$(pwd)
+echo $TEST
 
 function Set_KurzitHome () {
     # 1st Check for empty variable
