@@ -1,5 +1,5 @@
 Alias_Check "ls"
-if [[ $DIST == MacOS ]] || [[ $DIST == BSD ]]; then
+if [[ $DIST == macOS ]] || [[ $DIST == BSD ]]; then
     alias ls='ls -G'
 else
     alias ls='ls -h --color=auto'

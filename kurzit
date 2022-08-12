@@ -14,58 +14,92 @@ ScriptName=$(basename $0)
 # Export needed Variables that match OS/Distribution/Version
 function Get_Distro () {
     # Ubuntu/Debian
-    if [ -a /etc/debian_version ]; then
-        export DISTRel=$(< /etc/debian_version)
-        if [ -e /usr/bin/lsb_release ]; then
-            export DISTVer=$(lsb_release -r | awk '{ print $2 }')
-            export DIST=$(lsb_release -i | awk '{ print $3 }')
-        else
-            export DIST=Debian
-        fi
-    fi
+    #if [ -a /etc/debian_version ]; then
+    #    export DISTRel=$(< /etc/debian_version)
+    #    if [ -e /usr/bin/lsb_release ]; then
+    #        export DISTVer=$(lsb_release -r | awk '{ print $2 }')
+    #        export DIST=$(lsb_release -i | awk '{ print $3 }')
+    #    else
+    #        export DIST=Debian
+    #    fi
+    #fi
 
     # RedHat/CentOS/Fedora
-    if [ -a /etc/redhat-release ]; then
-        export DISTRel=$(< /etc/redhat-release)
-        if [ -e /usr/bin/lsb_release ]; then
-            export DISTVer=$(lsb_release -r | awk '{ print $2 }')
-            export DIST=$(lsb_release -i | awk '{ print $3 }')
-        else
-            export DIST=RedHat
-        fi
-    fi
+    #if [ -a /etc/redhat-release ]; then
+    #    export DISTRel=$(< /etc/redhat-release)
+    #    if [ -e /usr/bin/lsb_release ]; then
+    #        export DISTVer=$(lsb_release -r | awk '{ print $2 }')
+    #        export DIST=$(lsb_release -i | awk '{ print $3 }')
+    #    else
+    #        export DIST=RedHat
+    #    fi
+    #fi
 
     #MacOS/OSX
-    if [ -a /usr/bin/sw_vers ]; then
-        export DISTVer=$(sw_vers | grep ProductVersion | awk '{ print $2 }')
-        export DISTRel=$(sw_vers | grep ProductName | awk '{ print $2" "$3" "$4" "$5 }')
-        export DIST=MacOS
-    fi
+    #if [ -a /usr/bin/sw_vers ]; then
+    #    export DISTVer=$(sw_vers | grep ProductVersion | awk '{ print $2 }')
+    #    export DISTRel=$(sw_vers | grep ProductName | awk '{ print $2" "$3" "$4" "$5 }')
+    #    export DIST=MacOS
+    #fi
 
     #Cygwin
-    if [[ $Kern == CYGWIN* ]]; then
-        export DISTVer=$KernVer
-        export DISTRel=$Kern
-        export DIST=Cygwin
-    fi
-    
+    #if [[ $Kern == CYGWIN* ]]; then
+    #    export DISTVer=$KernVer
+    #    export DISTRel=$Kern
+    #    export DIST=Cygwin
+    #fi
+
     #FreeBSD
-    if [[ $Kern == *BSD ]]; then
-        export DISTVer=$KernVer
-        export DISTRel=$Kern
-        export DIST=BSD
-    fi
+    #if [[ $Kern == *BSD ]]; then
+    #    export DISTVer=$KernVer
+    #    export DISTRel=$Kern
+    #    export DIST=BSD
+    #fi
 
     # Arch
-    if [ -a /etc/arch-release ]; then
-        export DISTRel=$Kern
-        if [ -e /usr/bin/lsb_release ]; then
-            export DISTVer=$(lsb_release -r | awk '{ print $2 }')
-            export DIST=$(lsb_release -i | awk '{ print $3 }')
-        else
-            export DIST=Arch
-        fi
-    fi
+    #if [ -a /etc/arch-release ]; then
+    #    export DISTRel=$Kern
+    #    if [ -e /usr/bin/lsb_release ]; then
+    #        export DISTVer=$(lsb_release -r | awk '{ print $2 }')
+    #        export DIST=$(lsb_release -i | awk '{ print $3 }')
+    #    else
+    #        export DIST=Arch
+    #    fi
+    #fi
+
+    # Borrowed from https://github.com/xcad2k/dotfiles/
+    # find out which distribution we are running on
+    LFILE="/etc/*-release"
+    MFILE="/System/Library/CoreServices/SystemVersion.plist"
+    _distro=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
+
+    # set an icon based on the distro
+    # make sure your font is compatible with https://github.com/lukas-w/font-logos
+    case $_distro in
+        *kali*)                  ICON="ﴣ";DISTRO="Kail";;
+        *arch*)                  ICON="";DISTRO="Arch";;
+        *debian*)                ICON="";DISTRO="Debian";;
+        *raspbian*)              ICON="";DISTRO="Raspbian";;
+        *ubuntu*)                ICON="";DISTRO="Ubuntu";;
+        *elementary*)            ICON="";DISTRO="Elementary";;
+        *fedora*)                ICON="";DISTRO="Fedora";;
+        *coreos*)                ICON="";DISTRO="CoreOS";;
+        *gentoo*)                ICON="";DISTRO="Gentoo";;
+        *mageia*)                ICON="";DISTRO="Mageia";;
+        *centos*)                ICON="";DISTRO="CentOS";;
+        *opensuse*|*tumbleweed*) ICON="";DISTRO="SuSe";;
+        *sabayon*)               ICON="";DISTRO="Sabayon";;
+        *slackware*)             ICON="";DISTRO="Slackware";;
+        *linuxmint*)             ICON="";DISTRO="Mint";;
+        *alpine*)                ICON="";DISTRO="Alpine";;
+        *aosc*)                  ICON="";DISTRO="AOSC";;
+        *nixos*)                 ICON="";DISTRO="NixOS";;
+        *devuan*)                ICON="";DISTRO="Devuan";;
+        *manjaro*)               ICON="";DISTRO="Manjaro";;
+        *rhel*)                  ICON="";DISTRO="RedHat";;
+        *macos*)                 ICON="";DISTRO="macOS";;
+        *)                       ICON="";DISTRO="Linux";;
+    esac
 }
 
 function Set_KurzitHome () {
@@ -117,7 +151,7 @@ fi
 
 # Modifying .bashrc with variables needed to run kurzit
 if [[ $(grep -c "DIST" ~/.bashrc) -eq 0 ]]; then
-    echo export DIST=$DIST >> ~/.bashrc
+    echo export DIST="$DISTRO" >> ~/.bashrc
 fi
 
 if [[ $(grep -c "kurzit_home" ~/.bashrc) -eq 0 ]]; then
@@ -126,4 +160,12 @@ fi
 
 if [[ $(grep -c "kurzitrc" ~/.bashrc) -eq 0 ]]; then
     echo source $kurzit_home/kurzitrc >> ~/.bashrc
+fi
+
+# Check if Starship Cross-Platform Prompt is installed
+hash starship &> /dev/null
+if [ $? -eq 0 ]; then
+    echo export STARSHIP_DISTRO="$ICON " >> ~/.bashrc
+    echo export STARSHIP_CONFIG=~/.config/starship.toml >> ~/.bashrc
+    echo eval "$(starship init bash)" >> ~/.bashrc
 fi
