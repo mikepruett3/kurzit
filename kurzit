@@ -12,12 +12,10 @@ KernVer=$(uname -r)
 ScriptName=$(basename $0)
 
 # Set the $kurzit_home variable
-# 1st Check for empty variable
 if [ -z $kurzit_home ]; then
     # Check if $HOME/.kurzit exists, then use it for kurzit_home
     KURZIT_DIRS=(".kurzit" "kurzit")
-    for DIR in $KURZIT_DIRS
-    do
+    for DIR in $KURZIT_DIRS; do
         if [ -d $HOME/$DIR/ ]; then
             if [ -e $HOME/$DIR/kurzit ]; then
                 echo "$HOME/$DIR"
@@ -25,22 +23,7 @@ if [ -z $kurzit_home ]; then
             fi
         fi
     done
-    #if [ -d $HOME/.kurzit/ ]; then
-    #    if [ -e $HOME/.kurzit/kurzit ]; then
-    #        export kurzit_home=$HOME/.kurzit
-    #    fi
-    #fi
-
-     # Check if $HOME/kurzit exists, then use it for kurzit_home
-    #if [ -d $HOME/kurzit/ ]; then
-    #    if [ -e $HOME/kurzit/kurzit ]; then
-    #        export kurzit_home=$HOME/kurzit
-    #    fi
-    #fi
-fi
-
-# 2nd Check for empty variable
-if [ -z $kurzit_home ]; then
+else
     echo -n "Cannot find the kurzit_home variable..."
     echo -n "Please type in the path:"
     read kurzit_home
