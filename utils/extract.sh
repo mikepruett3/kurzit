@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 function extract () {
   if [ -f $1 ] ; then
     case $1 in

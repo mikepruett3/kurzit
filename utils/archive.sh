@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # Creates an archive from given directory
 function maketar() { tar cvf  "${1%%/}.tar"     "${1%%/}/"; }
 function makegzip() { tar cvzf "${1%%/}.tar.gz"  "${1%%/}/"; }
