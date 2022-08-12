@@ -170,5 +170,5 @@ if [ $? -eq 0 ]; then
     echo "# Starship Variables:" >> ~/.bashrc
     echo export STARSHIP_DISTRO="$ICON " >> ~/.bashrc
     echo export STARSHIP_CONFIG=~/.config/starship.toml >> ~/.bashrc
-    #echo \\eval "$(starship init bash)" >> ~/.bashrc
+    echo 'eval "$(starship init bash)"' >> ~/.bashrc
 fi
