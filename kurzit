@@ -9,7 +9,7 @@
 BashVer=$(bash --version | head -n 1 | awk '{ print $4 }')
 Kern=$(uname -s)
 KernVer=$(uname -r)
-ScriptName=$(basename $0)
+ScriptName=${FUNCNAME[0]}
 
 # Set the $kurzit_home variable
 if [ -z $kurzit_home ]; then

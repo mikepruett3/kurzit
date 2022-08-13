@@ -21,6 +21,13 @@ function Load_Utilities () {
     done
 }
 
+# Load Custom
+function Load_Custom () {
+    if [ -e $kurzit_home/custom.sh ]; then
+        . $kurzit_home/custom.sh
+    fi
+}
+
 # Unalias existing Aliases
 function Alias_Check () {
     _alias=${1}
