@@ -73,3 +73,11 @@ if [ $? -eq 0 ]; then
         echo 'eval "$(starship init bash)"' >> ~/.bashrc
     fi
 fi
+
+# Check if $HOME/.dotfiles exists, and set $DOTFILES
+DOTFILES_DIRS=(".dotfiles" "dotfiles")
+for DIR in "${DOTFILES_DIRS[@]}"; do
+    if [ -d $HOME/$DIR/ ]; then
+        export DOTFILES="$HOME/$DIR"
+    fi
+done
