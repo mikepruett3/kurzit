@@ -2,7 +2,7 @@
 
 function ssh-pass () {
     # Variables
-    ScriptName=`basename "$0"`
+    ScriptName=${FUNCNAME[0]}
     echo $ScriptName
 
     # Parameter Check
