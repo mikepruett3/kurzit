@@ -2,7 +2,7 @@
 
 function ssh-pass () {
     # Variables
-    ScriptName=$(basename $0)
+    ScriptName=${0##*/}
     # Parameter Check
     if [ "$#" -eq 0 ]; then
         echo "$ScriptName: Function that uses sshpass and an encrypted password"
