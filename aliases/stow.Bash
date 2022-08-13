@@ -9,12 +9,11 @@ function unstow { stow -vDt ~ ${1}; }
 DOTFILES_DIRS=(".dotfiles" "dotfiles")
 for DIR in "${DOTFILES_DIRS[@]}"; do
     if [ -d $HOME/$DIR/ ]; then
-        export DOTFILES="$HOME/$DIR"
-        echo "$DOTFILES"
-        #Alias_Check "dfup"
+        DOTFILES="$HOME/$DIR"
+        Alias_Check "dfup"
         function dfup () {
-            pushd "$HOME/$DIR/"; git pull; popd;
-            "$HOME/$DIR"/setup.sh
+            pushd "$DOTFILES"; git pull; popd;
+            "$DOTFILES"/setup.sh
         }
     fi
 done
