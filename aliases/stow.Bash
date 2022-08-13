@@ -7,7 +7,7 @@ function unstow { stow -vDt ~ ${1}; }
 
 # Check if $HOME/.dotfiles exists
 DOTFILES_DIRS=(".dotfiles" "dotfiles")
-for DIR in $DOTFILES_DIRS; do
+for DIR in "${DOTFILES_DIRS[@]}"; do
     if [ -d $HOME/$DIR/ ]; then
         Alias_Check "dfup"
         function dfup () {

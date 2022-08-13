@@ -24,7 +24,7 @@ if [ -z $kurzit_home ]; then
 else
     # Check if $HOME/.kurzit exists, then use it for kurzit_home
     KURZIT_DIRS=(".kurzit" "kurzit")
-    for DIR in $KURZIT_DIRS; do
+    for DIR in "${KURZIT_DIRS[@]}"; do
         if [ -d $HOME/$DIR/ ]; then
             if [ -e $HOME/$DIR/kurzit ]; then
                 export kurzit_home=$HOME/$DIR
