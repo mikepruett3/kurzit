@@ -49,7 +49,7 @@ function ssh-pass () {
         return
     fi
 
-    echo sshpass -p"${PASS}" ssh -oStrictHostKeyChecking=no -l "${USER}" "${HOST}"
+    sshpass -p"${PASS}" ssh -oStrictHostKeyChecking=no -l "${USER}" "${HOST}"
 
     # Cleanup vars
     unset HOST
