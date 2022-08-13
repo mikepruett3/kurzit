@@ -24,7 +24,6 @@ function Load_Utilities () {
 # Load Custom
 function Load_Custom () {
     if [ -e $kurzit_home/custom.sh ]; then
-        echo "Loading Custom"
         . $kurzit_home/custom.sh
     fi
 }
