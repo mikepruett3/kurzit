@@ -26,12 +26,18 @@ function ssh-pass () {
                 ;;
             -p)
                 shift;
-                PASS=$1;
+                PASS=$(echo "${1}" | openssl enc -d -des3 -base64 -pass pass:DummyEncryptPass -pbkdf2);
                 ;;
             *)  ;;
         esac
         shift
     done
+
+    # Check for OpenSSL
+    if ! hash openssl; then
+        echo "openssl not installed or included in path!"
+        return
+    fi
 
     # Check for sshpass
     if ! hash sshpass; then
@@ -39,7 +45,7 @@ function ssh-pass () {
         return
     fi
 
-    sshpass -p"${PASS}" ssh -oStrictHostKeyChecking=no -l "${USER}" ${HOST}
+    echo sshpass -p"${PASS}" ssh -oStrictHostKeyChecking=no -l "${USER}" "${HOST}"
 
     # Cleanup vars
     unset HOST
