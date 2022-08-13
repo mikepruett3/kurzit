@@ -78,6 +78,8 @@ fi
 DOTFILES_DIRS=(".dotfiles" "dotfiles")
 for DIR in "${DOTFILES_DIRS[@]}"; do
     if [ -d $HOME/$DIR/ ]; then
-        export DOTFILES="$HOME/$DIR"
+        echo "" >> ~/.bashrc
+        echo "# dotfiles Variables:" >> ~/.bashrc
+        echo export DOTFILES="$HOME/$DIR" >> ~/.bashrc
     fi
 done
