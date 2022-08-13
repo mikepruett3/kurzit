@@ -52,6 +52,7 @@ function ssh-pass () {
     sshpass -p"${PASS}" ssh -oStrictHostKeyChecking=no -l "${USER}" "${HOST}"
 
     # Cleanup vars
+    unset ScriptName
     unset HOST
     unset USER
     unset PASS
