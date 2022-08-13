@@ -75,11 +75,13 @@ if [ $? -eq 0 ]; then
 fi
 
 # Check if $HOME/.dotfiles exists, and set $DOTFILES
-DOTFILES_DIRS=(".dotfiles" "dotfiles")
-for DIR in "${DOTFILES_DIRS[@]}"; do
-    if [ -d $HOME/$DIR/ ]; then
-        echo "" >> ~/.bashrc
-        echo "# dotfiles Variables:" >> ~/.bashrc
-        echo export DOTFILES="$HOME/$DIR" >> ~/.bashrc
-    fi
-done
+if [[ $(grep -c "DOTFILES" ~/.bashrc) -eq 0 ]]; then
+    DOTFILES_DIRS=(".dotfiles" "dotfiles")
+    for DIR in "${DOTFILES_DIRS[@]}"; do
+        if [ -d $HOME/$DIR/ ]; then
+            echo "" >> ~/.bashrc
+            echo "# dotfiles Variables:" >> ~/.bashrc
+            echo export DOTFILES="$HOME/$DIR" >> ~/.bashrc
+        fi
+    done
+fi
