@@ -46,3 +46,11 @@ alias shutdown='sudo /sbin/shutdown'
 
 Alias_Check "reboot"
 alias reboot='sudo /sbin/reboot'
+
+Alias_Check "sdc"
+alias sdc="systemctl"
+
+Function_Check "sde"
+function sde {
+    systemctl edit --full ${1}
+}
