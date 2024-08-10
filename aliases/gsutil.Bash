@@ -9,6 +9,11 @@ function gls {
     gsutil ls gs://${1}
 }
 
+Function_Check "grm"
+function grm {
+    gsutil -m rm -a gs://${1}
+}
+
 Function_Check "grma"
 function grma {
     gsutil -m rm -a gs://${1}/**
