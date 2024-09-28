@@ -23,11 +23,15 @@ function Get_Distro () {
     #    export DIST=BSD
     #fi
 
-    # Borrowed from https://github.com/xcad2k/dotfiles/
-    # find out which distribution we are running on
-    LFILE="/etc/*-release"
-    MFILE="/System/Library/CoreServices/SystemVersion.plist"
-    _distro=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
+    if [ -x "$(command -v lsb_release)" ]; then
+        _distro=$(lsb_release -i | cut -d ":" -f 2 | xargs | tr '[:upper:]' '[:lower:]')
+    else
+        # Borrowed from https://github.com/xcad2k/dotfiles/
+        # find out which distribution we are running on
+        LFILE="/etc/*-release"
+        MFILE="/System/Library/CoreServices/SystemVersion.plist"
+        _distro=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
+    fi
 
     # set an icon based on the distro
     # make sure your font is compatible with https://github.com/lukas-w/font-logos
