@@ -36,28 +36,28 @@ function Get_Distro () {
     # set an icon based on the distro
     # make sure your font is compatible with https://github.com/lukas-w/font-logos
     case $_distro in
-        *kali*)                  ICON="ﴣ";DISTRO="Kail";;
-        *arch*)                  ICON="";DISTRO="Arch";;
-        *debian*)                ICON="";DISTRO="Debian";;
-        *raspbian*)              ICON="";DISTRO="Raspbian";;
-        *ubuntu*)                ICON="";DISTRO="Ubuntu";;
-        *elementary*)            ICON="";DISTRO="Elementary";;
-        *fedora*)                ICON="";DISTRO="Fedora";;
-        *coreos*)                ICON="";DISTRO="CoreOS";;
-        *gentoo*)                ICON="";DISTRO="Gentoo";;
-        *mageia*)                ICON="";DISTRO="Mageia";;
-        *centos*)                ICON="";DISTRO="CentOS";;
-        *opensuse*|*tumbleweed*) ICON="";DISTRO="SuSe";;
-        *sabayon*)               ICON="";DISTRO="Sabayon";;
-        *slackware*)             ICON="";DISTRO="Slackware";;
-        *linuxmint*)             ICON="";DISTRO="Mint";;
-        *alpine*)                ICON="";DISTRO="Alpine";;
-        *aosc*)                  ICON="";DISTRO="AOSC";;
-        *nixos*)                 ICON="";DISTRO="NixOS";;
-        *devuan*)                ICON="";DISTRO="Devuan";;
-        *manjaro*)               ICON="";DISTRO="Manjaro";;
-        *rhel*)                  ICON="";DISTRO="RedHat";;
-        *macos*)                 ICON="";DISTRO="macOS";;
-        *)                       ICON="";DISTRO="Linux";;
+        *kali*)                  export ICON="ﴣ";export DISTRO="Kail";;
+        *arch*)                  export ICON="";export DISTRO="Arch";;
+        *debian*)                export ICON="";export DISTRO="Debian";;
+        *raspbian*)              export ICON="";export DISTRO="Raspbian";;
+        *ubuntu*)                export ICON="";export DISTRO="Ubuntu";;
+        *elementary*)            export ICON="";export DISTRO="Elementary";;
+        *fedora*)                export ICON="";export DISTRO="Fedora";;
+        *coreos*)                export ICON="";export DISTRO="CoreOS";;
+        *gentoo*)                export ICON="";export DISTRO="Gentoo";;
+        *mageia*)                export ICON="";export DISTRO="Mageia";;
+        *centos*)                export ICON="";export DISTRO="CentOS";;
+        *opensuse*|*tumbleweed*) export ICON="";export DISTRO="SuSe";;
+        *sabayon*)               export ICON="";export DISTRO="Sabayon";;
+        *slackware*)             export ICON="";export DISTRO="Slackware";;
+        *linuxmint*)             export ICON="";export DISTRO="Mint";;
+        *alpine*)                export ICON="";export DISTRO="Alpine";;
+        *aosc*)                  export ICON="";export DISTRO="AOSC";;
+        *nixos*)                 export ICON="";export DISTRO="NixOS";;
+        *devuan*)                export ICON="";export DISTRO="Devuan";;
+        *manjaro*)               export ICON="";export DISTRO="Manjaro";;
+        *rhel*)                  export ICON="";export DISTRO="RedHat";;
+        *macos*)                 export ICON="";export DISTRO="macOS";;
+        *)                       export ICON="";export DISTRO="Linux";;
     esac
 }
