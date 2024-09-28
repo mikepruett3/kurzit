@@ -12,3 +12,42 @@ alias service="sudo /usr/sbin/service"
 # IPTables Commands
 Alias_Check "iptsave"
 alias iptsave="sudo /usr/sbin/service iptables-persistent save"
+
+Alias_Check "systemctl"
+alias systemctl="sudo /bin/systemctl"
+
+Alias_Check "useradd"
+alias useradd='sudo /usr/sbin/useradd'
+
+Alias_Check "userdel"
+alias userdel='sudo /usr/sbin/usrdel'
+
+Alias_Check "usermod"
+alias usermod='sudo /usr/sbin/usermod'
+
+Alias_Check "groupadd"
+alias groupadd='sudo /usr/sbin/groupadd'
+
+Alias_Check "groupdel"
+alias groupdel='sudo /usr/sbin/groupdel'
+
+Alias_Check "groupmod"
+alias groupmod='sudo /usr/sbin/groupmod'
+
+Alias_Check "ifconfig"
+alias ifconfig='ip addr show'
+
+# Machine Control Commands
+Alias_Check "shutdown"
+alias shutdown='sudo /sbin/shutdown'
+
+Alias_Check "reboot"
+alias reboot='sudo /sbin/reboot'
+
+Alias_Check "sdc"
+alias sdc="systemctl"
+
+Function_Check "sde"
+function sde {
+    systemctl edit --full ${1}
+}
