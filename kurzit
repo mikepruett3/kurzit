@@ -12,16 +12,16 @@ KernVer=$(uname -r)
 ScriptName=${FUNCNAME[0]}
 
 # Set the $kurzit_home variable
-if [ -z $kurzit_home ]; then
-    echo -n "Cannot find the kurzit_home variable..."
-    echo -n "Please type in the path:"
-    read kurzit_home
-    export kurzit_home
-        if ! [ -d $kurzit_home ]; then
-            echo Cannot find the kurzit_home variable, exiting script
-            exit 1
-        fi
-else
+#if [ -z $kurzit_home ]; then
+#    echo -n "Cannot find the kurzit_home variable..."
+#    echo -n "Please type in the path:"
+#    read kurzit_home
+#    export kurzit_home
+#        if ! [ -d $kurzit_home ]; then
+#            echo Cannot find the kurzit_home variable, exiting script
+#            exit 1
+#        fi
+#else
     # Check if $HOME/.kurzit exists, then use it for kurzit_home
     KURZIT_DIRS=(".kurzit" "kurzit")
     for DIR in "${KURZIT_DIRS[@]}"; do
@@ -31,7 +31,7 @@ else
             fi
         fi
     done
-fi
+#fi
 
 # Import Functions
 for fn in $(find $kurzit_home/functions/ -type f ); do
