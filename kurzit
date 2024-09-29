@@ -42,46 +42,50 @@ done
 Get_Distro
 
 # Searching for .bashrc, and exit if not found!
-if [ ! -e ~/.bashrc ]; then
+if [ -e ~/.bashrc ]; then
+    export $PROFILE=~/.bashrc
+elif [ -e ~/.bash_profile ]; then
+    export $PROFILE=~/.bash_profile
+else
     echo -n "Cannot find .bashrc, exiting!"
     exit 1
 fi
 
 # Modifying .bashrc with variables needed to run kurzit
-if [[ $(grep -c "DIST" ~/.bashrc) -eq 0 ]]; then
-    echo "" >> ~/.bashrc
-    echo "# Kurzit Variables:" >> ~/.bashrc
-    echo export DIST="$DISTRO" >> ~/.bashrc
+if [[ $(grep -c "DIST" $PROFILE) -eq 0 ]]; then
+    echo "" >> $PROFILE
+    echo "# Kurzit Variables:" >> $PROFILE
+    echo export DIST="$DISTRO" >> $PROFILE
 fi
 
-if [[ $(grep -c "kurzit_home" ~/.bashrc) -eq 0 ]]; then
-    echo export kurzit_home=$kurzit_home >> ~/.bashrc
+if [[ $(grep -c "kurzit_home" $PROFILE) -eq 0 ]]; then
+    echo export kurzit_home=$kurzit_home >> $PROFILE
 fi
 
-if [[ $(grep -c "kurzitrc" ~/.bashrc) -eq 0 ]]; then
-    echo source $kurzit_home/kurzitrc >> ~/.bashrc
+if [[ $(grep -c "kurzitrc" $PROFILE) -eq 0 ]]; then
+    echo source $kurzit_home/kurzitrc >> $PROFILE
 fi
 
 # Check if Starship Cross-Platform Prompt is installed
 hash starship &> /dev/null
 if [ $? -eq 0 ]; then
-    if [[ $(grep -c "STARSHIP_DISTRO" ~/.bashrc) -eq 0 ]]; then
-        echo "" >> ~/.bashrc
-        echo "# Starship Variables:" >> ~/.bashrc
-        echo export STARSHIP_DISTRO="$ICON " >> ~/.bashrc
-        echo export STARSHIP_CONFIG=~/.config/starship.toml >> ~/.bashrc
-        echo 'eval "$(starship init bash)"' >> ~/.bashrc
+    if [[ $(grep -c "STARSHIP_DISTRO" $PROFILE) -eq 0 ]]; then
+        echo "" >> $PROFILE
+        echo "# Starship Variables:" >> $PROFILE
+        echo export STARSHIP_DISTRO="$ICON " >> $PROFILE
+        echo export STARSHIP_CONFIG=~/.config/starship.toml >> $PROFILE
+        echo 'eval "$(starship init bash)"' >> $PROFILE
     fi
 fi
 
 # Check if $HOME/.dotfiles exists, and set $DOTFILES
-if [[ $(grep -c "DOTFILES" ~/.bashrc) -eq 0 ]]; then
+if [[ $(grep -c "DOTFILES" $PROFILE) -eq 0 ]]; then
     DOTFILES_DIRS=(".dotfiles" "dotfiles")
     for DIR in "${DOTFILES_DIRS[@]}"; do
         if [ -d $HOME/$DIR/ ]; then
-            echo "" >> ~/.bashrc
-            echo "# dotfiles Variables:" >> ~/.bashrc
-            echo export DOTFILES="$HOME/$DIR" >> ~/.bashrc
+            echo "" >> $PROFILE
+            echo "# dotfiles Variables:" >> $PROFILE
+            echo export DOTFILES="$HOME/$DIR" >> $PROFILE
         fi
     done
 fi
