@@ -32,7 +32,7 @@ function mailtest () {
     declare -a test
     for i in ${SMTPVars[@]}
     do
-        if [[ -v $i ]]; then
+        if [ -v $i ]; then
             test+=(true)
         fi
     done
@@ -49,7 +49,7 @@ function mailtest () {
         echo -e "\t -r email recipient"
         return
     fi
-    
+
     # Parameters
     while [ "$#" -gt 0 ]; do
         case "$1" in
