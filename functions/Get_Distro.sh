@@ -2,36 +2,13 @@
 
 # Export needed Variables that match OS/Distribution/Version
 function Get_Distro () {
-    #MacOS/OSX
-    #if [ -a /usr/bin/sw_vers ]; then
-    #    export DISTVer=$(sw_vers | grep ProductVersion | awk '{ print $2 }')
-    #    export DISTRel=$(sw_vers | grep ProductName | awk '{ print $2" "$3" "$4" "$5 }')
-    #    export DIST=MacOS
-    #fi
-
-    #Cygwin
-    #if [[ $Kern == CYGWIN* ]]; then
-    #    export DISTVer=$KernVer
-    #    export DISTRel=$Kern
-    #    export DIST=Cygwin
-    #fi
-
-    #FreeBSD
-    #if [[ $Kern == *BSD ]]; then
-    #    export DISTVer=$KernVer
-    #    export DISTRel=$Kern
-    #    export DIST=BSD
-    #fi
-
     if [ -x "$(command -v lsb_release)" ]; then
         _distro=$(lsb_release -i | cut -d ":" -f 2 | xargs | tr '[:upper:]' '[:lower:]')
     elif [ -e "/System/Library/CoreServices/SystemVersion.plist" ]; then
         _distro=$(xmllint --xpath 'string(/plist/dict)' /System/Library/CoreServices/SystemVersion.plist | head -n 7 | tail -n 1 | xargs | awk '{ print tolower($1) }')
+    elif [ -e "/etc/debian_version" ]; then
+        _distro="debian"
     else
-        # Borrowed from https://github.com/xcad2k/dotfiles/
-        # find out which distribution we are running on
-        LFILE="/etc/*-release"
-        MFILE="/System/Library/CoreServices/SystemVersion.plist"
         _distro=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
     fi
 
