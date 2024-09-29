@@ -25,6 +25,8 @@ function Get_Distro () {
 
     if [ -x "$(command -v lsb_release)" ]; then
         _distro=$(lsb_release -i | cut -d ":" -f 2 | xargs | tr '[:upper:]' '[:lower:]')
+    elif [ -e "/System/Library/CoreServices/SystemVersion.plist" ]; then
+        _distro=$(xmllint --xpath 'string(/plist/dict)' /System/Library/CoreServices/SystemVersion.plist | head -n 7 | tail -n 1 | xargs | awk '{ print tolower($1) }')
     else
         # Borrowed from https://github.com/xcad2k/dotfiles/
         # find out which distribution we are running on
