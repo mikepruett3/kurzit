@@ -43,9 +43,9 @@ Get_Distro
 
 # Searching for .bashrc, and exit if not found!
 if [ -e ~/.bashrc ]; then
-    export $PROFILE=~/.bashrc
+    export $PROFILE='~/.bashrc'
 elif [ -e ~/.bash_profile ]; then
-    export $PROFILE=~/.bash_profile
+    export $PROFILE='~/.bash_profile'
 else
     echo -n "Cannot find .bashrc, exiting!"
     exit 1
