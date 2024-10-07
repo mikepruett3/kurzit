@@ -29,3 +29,10 @@ function srcp {
         source "$HOME/.bash_profile"
     fi
 }
+
+Alias_Check "cat"
+if [ -x "$(command -v batcat)" ]; then
+    alias cat='batcat'
+elif [ -x "$(command -v bat)" ]; then
+    alias cat='bat'
+fi
