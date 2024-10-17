@@ -1,6 +1,6 @@
 Alias_Check "ls"
 if [ -x "$(command -v eza)" ]; then
-    alias ls='eza'
+    alias ls='eza --hyperlink --icons'
 elif [ -x "$(command -v exa)" ]; then
     alias ls='exa'
 elif [[ $DIST == macOS ]] || [[ $DIST == BSD ]]; then
