@@ -46,7 +46,8 @@ function Function_Check () {
 
 # Parse Date of Last Update
 function Last_Update_Check () {
-    _kurzit_last_update=$(cat ~/.kdup)
+    #_kurzit_last_update=$(cat ~/.kdup)
+    _kurzit_last_update=eval "$(which cat) ~/.kdup"
     if [ -z $_kurzit_last_update ]; then
         echo "Cannot find Last Update, running update script..."
         $kurzit_home/update

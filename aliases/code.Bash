@@ -1,3 +1,5 @@
+# Added for blurryness on Wayland
+# https://github.com/microsoft/vscode/issues/192590
 Function_Check "code"
 if [ -z "$XDG_SESSION_TYPE" ] || [ "$XDG_SESSION_TYPE" = "wayland" ]; then
     function code {
