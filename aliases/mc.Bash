@@ -2,6 +2,6 @@
 Function_Check "mc-mirror"
 function mc-mirror {
     pushd ~/;
-    mc.exe mirror ~/Images/ minio;
+    mc mirror ~/Images/ minio;
     popd;
 }
